@@ -20,7 +20,6 @@ class Artwork < ApplicationRecord
   def self.get_artwork_name(slug)
     puts slug
     @artwork_data = Artwork.get_artwork("https://www.sfmoma.org/api/collection/artworks/#{slug}/")
-    puts @artwork_data
     return @artwork_data['title']['display']
   end
 

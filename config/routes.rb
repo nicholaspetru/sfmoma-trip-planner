@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   resources :users
   resources :interests
   get '/interests' => 'interests#index'
-  post '/users/:id' => 'interest_mailer#user_interest_mailer'
+  post '/users/:id' => 'users#mail_interests'
+  get '/users/:id' => 'users#show'
   post '/interests/new' => 'interests#create_interest'
   post '/users/new' => 'users#create'
   get '/slugs' => 'slug#index'

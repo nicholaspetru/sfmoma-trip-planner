@@ -30,6 +30,12 @@ a {
   vertical-align: top;
 }
 
+.mailer-button {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 table {
   margin-bottom: 15px;
   th, td {

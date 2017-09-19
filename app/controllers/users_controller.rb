@@ -9,12 +9,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @artist_interests = Interest.where('user_id' => @user.username).pluck(:artist_slug)
     @artwork_interests = Interest.where('user_id' => @user.username).pluck(:artwork_slug)
-    @artwork_is_empty = @artwork_interests.uniq.length == 1 and @artwork_interests[0].nil?
-    @artist_is_empty = @artist_interests.uniq.length == 1 and @artist_interests[0].nil?
   end
 
-  def mail_interests(user)
-    @user = user
+  def mail_interests
+    @user = User.find(params[:id])
     InterestMailer.user_interest_mailer(@user).deliver_now
   end
 

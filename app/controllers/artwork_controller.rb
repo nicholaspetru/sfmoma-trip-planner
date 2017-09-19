@@ -11,8 +11,6 @@ class ArtworkController < ApplicationController
     request_url = @@base_url + "#{ params[:id].tr('_','.') }/"
     @artwork = Artwork.get_artwork(request_url)
     @artist = @artwork['artists'][0]['artist'] unless @artwork['artists'].nil?
-    puts "url: #{request_url}"
-    puts "artist: #{ @artist }"
     @artist_slug = extract_artist_slug(@artist['url'])
   end
 

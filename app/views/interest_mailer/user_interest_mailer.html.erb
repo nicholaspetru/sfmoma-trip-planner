@@ -6,25 +6,43 @@
   <body>
     <h1>Hello, <%= @user.first_name %></h1>
     <p>Thanks for choosing to use my SFMOMA guide to help gather artists and artworks of interest!</p>
-    <p>Be sure to ask about these artists when you visit the museum:<br />
-      <ul>
-        <% @artists.each do |artist| %>
-          <% unless artist.nil? or artist.to_s.empty? %>
-            <li><%= artist.tr('_', ' ') %></li>
-          <% end %>
-        <% end %>
-      </ul>
-    </p>
-    <p>And keep an eye out for these pieces when you visit the museum:<br />
-      <ul>
-        <% @artworks.each do |artwork| %>
-          <% unless artwork.nil? or artwork.to_s.empty? %>
-            <li><%= Artwork.get_artwork_name(artwork.tr('_', '.')) %></li>
-          <% end %>
-        <% end %>
-      </ul>
-    </p>
+
+    <% if @artists.uniq.length == 1 and @artists.include? nil %>
+      <p>You haven't saved any interets.</p>
+    <% else %>
+
+      <% if @artist_is_empty %>
+        <p>You haven't selected any artists of interest yet.</p>
+      <% else %>
+        <p>Be sure to ask about these artists when you visit the museum:<br />
+          <ul>
+            <% @artists.each do |artist| %>
+              <% unless artist.nil? or artist.to_s.empty? %>
+                <li><%= artist.tr('_', ' ') %></li>
+              <% end %>
+            <% end %>
+          </ul>
+        </p>
+      <% end %>
+
+      <% if @artworks.uniq.length == 1 and @artworks.include? nil %>
+        <p>You haven't selected any artworks of interest yet.</p>
+      <% else %>
+        <p>And keep an eye out for these pieces during your visit:<br />
+          <ul>
+            <% @artworks.each do |artwork| %>
+              <% unless artwork.nil? or artwork.to_s.empty? %>
+                <li><%= Artwork.get_artwork_name(artwork.tr('_', '.')) %></li>
+              <% end %>
+            <% end %>
+          </ul>
+        </p>
+      <% end %>
+
+    <% end %>
+
     <p>Feel free to reply to this email with any questions.</p>
+
     <p>
       Sincereley,<br />
       Nick
