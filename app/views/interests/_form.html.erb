@@ -1,0 +1,22 @@
+<%= form_with model: interest do |form| %>
+  <% if interest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(interest.errors.count, "error") %> prohibited this interest from being saved:</h2>
+
+      <ul>
+      <% interest.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    Please fill in an existing username to create a new interest in <%= @label %>
+  </p>
+  <div class="actions">
+    <%= form.text_field :user_id, class: "form-control ", placeholder: 'username'%>
+    <%= form.text_field @type.to_sym, class: "form-control ", placeholder: 'artist/artwork slug', value: @slug %>
+    <%= form.submit 'Save new interest' %>
+  </div>
+  <br />
+<% end %>

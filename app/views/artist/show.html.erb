@@ -1,0 +1,9 @@
+<h3><%= link_to @artist_data['name']['display'], @artist_data['web_url'], target: :_blank %></h3>
+
+<%= link_to "Add #{@artist_data['name']['display']} as a new interest >>", { :controller => "interests", :action => "create_interest", :slug => @artist_slug, :type => 'artist_slug' } %>
+
+<ul>
+  <%= render 'conditional_list', iterable: @artist_data %>
+</ul>
+
+<%= link_to 'All artists', slugs_path %>

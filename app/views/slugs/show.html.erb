@@ -1,0 +1,15 @@
+<div class="artists_slugs">
+  <h3>Artist list:</h3>
+
+  <ul>
+    <% @slug_list.each do |slug| %>
+      <li><%= link_to slug.tr('_', ' '), "/artist/#{ slug }" %></li>
+    <% end %>
+  </ul>
+  <div class="page_btn">
+    <%= link_to 'prev', "/slugs/#{ @prev_url }" %>
+  </div>
+  <div class="page_btn">
+    <%= link_to 'next', "/slugs/#{ @next_url }" %>
+  </div>
+</div>

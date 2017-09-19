@@ -1,0 +1,12 @@
+<h3>Interest</h3>
+
+<div>
+  <strong>User:</strong> <%= link_to "#{@user.first_name} #{@user.last_name}", user_path(@user) %><br />
+  <strong>Username:</strong> <%= @interest.user_id %><br />
+  <strong>Full name:</strong> <%= @user.first_name %> <%= @user.last_name %><br />
+  <strong>Interest:</strong> <%= link_to "View #{ @interest_link_text }", @interest_link %>
+</div>
+
+<br />
+
+<%= link_to 'View interests', interests_path %>

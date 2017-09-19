@@ -1,0 +1,18 @@
+<h3><%= @artist['name']['display'] %>&apos;s artworks:</h3>
+
+<%= link_to "Add #{@artist['name']['display']} as a new interest >>", { :controller => "interests", :action => "create_interest", :slug => @artist_slug, :type => 'artist_slug' } %>
+
+<ul>
+  <% @artworks.each do |art| %>
+    <li>
+      <%= link_to art['title']['display'], "/artwork/#{ art['slug'].tr('.','_') }" %>
+      (Or <%= link_to 'go to sfmoma.org', art['web_url'], target: :_blank %>)
+      <br />
+      <% if art["images"].any? %>
+        <%= image_tag(art["images"][0]["public_image"], size: "400x400") %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'All artists', slugs_path %>

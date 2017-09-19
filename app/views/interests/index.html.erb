@@ -1,0 +1,26 @@
+<h3>All Interests</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Interest</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @interests.each do |interest| %>
+    <tr>
+      <td><%= link_to "#{User.find_by(username: interest.user_id).first_name} #{User.find_by(username: interest.user_id).last_name}", user_path(User.find_by(username: interest.user_id)) %></td>
+      <td><%= (interest.artist_slug.nil? || interest.artist_slug.empty?) ? get_label('artwork_slug', interest.artwork_slug) : get_label('artist_slug', interest.artist_slug) %></td>
+      <td><%= (interest.artist_slug.nil? || interest.artist_slug.empty?) ? 'artwork' : 'artist' %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Full artist list', slugs_path %>
+&nbsp;|&nbsp;
+<%= link_to 'All users', users_path %>
+&nbsp;|&nbsp;
+<%= link_to 'New user', new_user_path %>

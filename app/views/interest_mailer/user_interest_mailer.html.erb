@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello, <%= @user.first_name %></h1>
+    <p>Thanks for choosing to use my SFMOMA guide to help gather artists and artworks of interest!</p>
+    <p>Be sure to ask about these artists when you visit the museum:<br />
+      <ul>
+        <% @artists.each do |artist| %>
+          <% unless artist.nil? or artist.to_s.empty? %>
+            <li><%= artist.tr('_', ' ') %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </p>
+    <p>And keep an eye out for these pieces when you visit the museum:<br />
+      <ul>
+        <% @artworks.each do |artwork| %>
+          <% unless artwork.nil? or artwork.to_s.empty? %>
+            <li><%= Artwork.get_artwork_name(artwork.tr('_', '.')) %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </p>
+    <p>Feel free to reply to this email with any questions.</p>
+    <p>
+      Sincereley,<br />
+      Nick
+    </p>
+  </body>
+</html>

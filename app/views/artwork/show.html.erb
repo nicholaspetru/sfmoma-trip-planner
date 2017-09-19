@@ -1,0 +1,16 @@
+<h3><%= link_to @artwork['title']['display'], @artwork['web_url']  %></h3>
+
+<%= link_to "Add #{@artwork['title']['display']} as a new interest >>", { :controller => "interests", :action => "create_interest", :slug => @artwork['slug'].tr('.', '_'), :type => 'artwork_slug' } %>
+<br />
+<br />
+<div>
+  <% unless @artwork["images"].nil? or @artwork["images"].empty? %>
+    <%= image_tag(@artwork["images"][0]["public_image"], size: "400x400") %>
+    <br />
+  <% end %>
+</div>
+<ul>
+  <%= render 'conditional_list', iterable: @artwork %>
+</ul>
+<br />
+<%= link_to "Learn about #{ @artist['name_display'] }", "/artist/#{ @artist_slug }" %>

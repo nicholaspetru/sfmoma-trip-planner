@@ -1,0 +1,39 @@
+$primary-color: #ff483b;
+
+* {
+  font-family: 'Muli', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, a {
+  color: $primary-color;
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    color:darken($primary-color, 15%);
+  }
+}
+
+.artists_slugs {
+  max-width: 400px;
+}
+.page_btn {
+  display: inline-block;
+}
+.page_btn:last-child {
+  float: right;
+}
+
+.interest_container {
+  display: inline-block;
+  vertical-align: top;
+}
+
+table {
+  margin-bottom: 15px;
+  th, td {
+    text-align: left;
+    padding-right: 10px;
+  }
+}

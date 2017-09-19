@@ -1,0 +1,43 @@
+<h3><%= @user.first_name %> <%= @user.last_name %>&apos;s interests</h3>
+
+<p>
+  <%= #button_to 'Email me my interests', { :controller => "interest_mailer", :action => "user_interest_mailer", :user => @user } %>
+</p>
+
+<div class="interest_container">
+  <h4>Artists</h4>
+
+  <ul>
+    <% if @artist_is_empty or @artist_interests.empty? %>
+      <li>No artworks of interest available</li>
+    <% else %>
+      <% @artist_interests.each do |artist_interest| %>
+        <% unless artist_interest.nil? or artist_interest.empty? %>
+          <li><%= link_to artist_interest.tr('_', ' '), "/artist/#{artist_interest}" %></li>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<div class="interest_container">
+  <h4>Artworks</h4>
+  <ul>
+    <% if @artwork_is_empty or @artwork_interests.empty? %>
+      <li>No artworks of interest available</li>
+    <% else %>
+      <% @artwork_interests.each do |artwork_interest| %>
+        <% unless artwork_interest.nil? %>
+          <li><%= link_to Artwork.get_artwork_name(artwork_interest.tr('_', '.')), "/artwork/#{artwork_interest.tr('.', '_')}" %></li>
+        <% end %>
+      <% end %>
+    <% end %>
+
+  </ul>
+</div>
+
+<br />
+
+<%= link_to 'New user', new_user_path %>
+&nbsp;|&nbsp;
+<%= link_to 'All users', users_path %>

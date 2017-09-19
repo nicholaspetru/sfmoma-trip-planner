@@ -1,0 +1,29 @@
+<% iterable.each do |key, value| %>
+  <% unless value.nil? or value.to_s.empty? %>
+    <% if value.is_a? Hash %>
+      <li><strong><%= key %>:
+        <ul>
+          <% value.each do |sub_key, sub_value| %>
+            <% unless sub_value.nil? or sub_value.to_s.empty? %>
+              <li><strong><%= sub_key %>:</strong> <%= sub_value %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </li>
+
+    <% elsif value.is_a? Array %>
+      <li><strong><%= key %>:
+        <ul>
+          <% value.each do |sub_item| %>
+            <% unless sub_item.nil? or sub_item.to_s.empty? %>
+              <%= render 'conditional_list', iterable: sub_item %>
+            <% end %>
+          <% end %>
+        </ul>
+      </li>
+
+    <% else %>
+      <li><strong><%= key %>:</strong> <%= value %></li>
+    <% end %>
+  <% end %>
+<% end %>

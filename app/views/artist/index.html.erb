@@ -1,0 +1,25 @@
+<h3>Artists</h3>
+<table>
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Artworks
+      </th>
+      <th>
+        Web Url
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @artists.each do |artist| %>
+    <tr>
+      <td><%= artist.name %></td>
+      <td><%= artist.web_url %></td>
+      <td><%= link_to 'artworks', artworks_path(artist) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

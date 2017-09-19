@@ -1,0 +1,23 @@
+<h1>Artwork</h1>
+
+<p>
+  <%= form_tag artwork_index_path do %>
+  <label for="artist_name">Search by artist name:</label>
+  <%= text_field_tag :artist_name %>
+ <%= submit_tag "Submit" %>
+<% end %>
+</p>
+
+<ul>
+<% @artworks.each do |art|%>
+  <% if art["images"].length == 0 %>
+    <li> N/A </li>
+	<% else %>
+    <%= art['web_url'] %>
+    <br />
+    <%= art["artists"][0]['artist']['name_display'] %>
+    <br />
+    <%= image_tag(art["images"][0]["public_image"], size: "200x200") %>
+  <% end %>
+<% end %>
+</ul>

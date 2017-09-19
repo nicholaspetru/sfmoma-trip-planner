@@ -1,0 +1,22 @@
+Hello, <%= @user.first_name %>
+
+Thanks for choosing to use my SFMOMA guide to help gather artists and artworks of interest!
+
+Be sure to ask about these artists when you visit the museum:
+<% @artists.each do |artist| %>
+  <% unless artist.nil? or artist.to_s.empty? %>
+    -> <%= artist.tr('_', ' ') %>
+  <% end %>
+<% end %>
+
+And keep an eye out for these pieces when you visit the museum:
+<% @artworks.each do |artwork| %>
+  <% unless artwork.nil? or artwork.to_s.empty? %>
+    <%= Artwork.get_artwork_name(artwork.tr('_', '.')) %>
+  <% end %>
+<% end %>
+
+Feel free to reply to this email with any questions.
+
+Sincereley,
+Nick
