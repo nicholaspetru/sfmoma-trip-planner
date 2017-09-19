@@ -1,12 +1,12 @@
 <h3><%= @user.first_name %> <%= @user.last_name %>&apos;s interests</h3>
 
-<%= button_to 'Email me my interests', { :controller => "users", :action => "mail_interests" }, {class: 'mailer-button btn btn-small'} %>
+<%= button_to 'Email me my interests', { :controller => "users", :action => "mail_interests", :disabled => @user.email.nil? }, { class: "mailer-button btn btn-sm btn-default #{ @active_button_class }" } %>
 
 <div class="interest_container">
   <h4>Artists</h4>
 
   <ul>
-    <% if @artist_interests.uniq.length == 1 and @artist_interests.include? nil %>
+    <% if (@artist_interests.uniq.length == 1 and @artist_interests.include? nil) or @artist_interests.empty? %>
       <li>No artworks of interest available</li>
     <% else %>
       <% @artist_interests.each do |artist_interest| %>
@@ -21,7 +21,7 @@
 <div class="interest_container">
   <h4>Artworks</h4>
   <ul>
-    <% if @artwork_interests.uniq.length == 1 and @artwork_interests.include? nil %>
+    <% if (@artwork_interests.uniq.length == 1 and @artwork_interests.include? nil) or @artwork_interests.empty? %>
       <li>No artworks of interest available</li>
     <% else %>
       <% @artwork_interests.each do |artwork_interest| %>

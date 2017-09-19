@@ -7,7 +7,7 @@
     <h1>Hello, <%= @user.first_name %></h1>
     <p>Thanks for choosing to use my SFMOMA guide to help gather artists and artworks of interest!</p>
 
-    <% if @artists.uniq.length == 1 and @artists.include? nil %>
+    <% if (@artists.uniq.length == 1 and @artists.include? nil) or @artists.empty? %>
       <p>You haven't saved any interets.</p>
     <% else %>
 
@@ -25,7 +25,7 @@
         </p>
       <% end %>
 
-      <% if @artworks.uniq.length == 1 and @artworks.include? nil %>
+      <% if (@artworks.uniq.length == 1 and @artworks.include? nil) or @artworks.empty? %>
         <p>You haven't selected any artworks of interest yet.</p>
       <% else %>
         <p>And keep an eye out for these pieces during your visit:<br />

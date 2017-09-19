@@ -1,11 +1,11 @@
 Hello, <%= @user.first_name %>
 
 Thanks for choosing to use my SFMOMA guide to help gather artists and artworks of interest!
-<% if @artists.uniq.length == 1 and @artists.include? nil and @artworks.uniq.length == 1 and @artworks.include? nil %>
+<% if (@artists.uniq.length == 1 and @artists.include? nil) and (@artworks.uniq.length == 1 and @artworks.include? nil) %>
   You haven't saved any interets.
 <% else %>
 
-  <% if @artists.uniq.length == 1 and @artists.include? nil %>
+  <% if (@artists.uniq.length == 1 and @artists.include? nil) or @artists.empty? %>
     You haven't selected any artists of interest yet.
   <% else %>
     Be sure to ask about these artists when you visit the museum:
@@ -16,7 +16,7 @@ Thanks for choosing to use my SFMOMA guide to help gather artists and artworks o
     <% end %>
   <% end %>
 
-  <% if @artworks.uniq.length == 1 and @artworks.include? nil %>
+  <% if (@artworks.uniq.length == 1 and @artworks.include? nil) or @artworks.empty? %>
     You haven't selected any artworks of interest yet.
   <% else %>
     And keep an eye out for these pieces during your visit:

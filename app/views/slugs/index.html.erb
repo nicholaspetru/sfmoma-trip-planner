@@ -1,15 +1,22 @@
 <div class="artists_slugs">
-  <h3>Artist list:</h3>
+  <h3>Artist list</h3>
+
+  <div class="page_btn prev">
+    <%= link_to '<< prev', "/slugs/#{ @prev_url }", class: "btn btn-default" %>
+  </div>
+  <div class="page_btn next">
+    <%= link_to 'next >>', "/slugs/#{ @next_url }", class: "btn btn-default" %>
+  </div>
 
   <ul>
     <% @slug_list.each do |slug| %>
       <li><%= link_to slug.tr('_', ' '), "/artist/#{ slug }" %></li>
     <% end %>
   </ul>
-  <div class="page_btn">
-    <%= link_to 'prev', "/slugs/#{ @prev_url }" %>
-  </div>
-  <div class="page_btn">
-    <%= link_to 'next', "/slugs/#{ @next_url }" %>
-  </div>
 </div>
+<br />
+<%= link_to 'All interests', root_path %>
+&nbsp;|&nbsp;
+<%= link_to 'All users', users_path %>
+&nbsp;|&nbsp;
+<%= link_to 'New user', new_user_path %>

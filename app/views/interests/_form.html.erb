@@ -16,7 +16,7 @@
   <div class="actions">
     <%= form.text_field :user_id, class: "form-control ", placeholder: 'username'%>
     <%= form.text_field @type.to_sym, class: "form-control ", placeholder: 'artist/artwork slug', value: @slug %>
-    <%= form.submit 'Save new interest' %>
+    <%= form.submit 'Save new interest',  :class => "btn btn-default btn-sm" %>
   </div>
   <br />
 <% end %>

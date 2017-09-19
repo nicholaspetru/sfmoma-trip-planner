@@ -1,7 +1,14 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 $primary-color: #ff483b;
 
 * {
-  font-family: 'Muli', sans-serif;
+  font-family: 'Muli', sans-serif !important;
+}
+
+body {
+  padding: 10px 20px;
 }
 
 h1, h2, h3, h4, h5, h6, a {
@@ -16,12 +23,12 @@ a {
 }
 
 .artists_slugs {
-  max-width: 400px;
+  max-width: 300px;
 }
 .page_btn {
   display: inline-block;
 }
-.page_btn:last-child {
+.page_btn.next {
   float: right;
 }
 
@@ -31,9 +38,18 @@ a {
 }
 
 .mailer-button {
-  &:hover {
+  &:not(.disabled):hover {
     cursor: pointer;
   }
+}
+
+.actions {
+  margin-bottom: 15px;
+}
+
+input {
+  max-width: 250px;
+  margin-bottom: 5px;
 }
 
 table {

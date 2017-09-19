@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @artist_interests = Interest.where('user_id' => @user.username).pluck(:artist_slug)
     @artwork_interests = Interest.where('user_id' => @user.username).pluck(:artwork_slug)
+    @active_button_class = @user.email.nil? ? "disabled" : ""
   end
 
   def mail_interests
